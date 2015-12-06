@@ -1,0 +1,21 @@
+{{# if won}}
+  <h1>You Won!!</h1>
+{{/if}}
+Bombs: {{input value=numberOfBombs}}<button {{action 'restart'}}>Restart</button>
+<table>
+  {{#each grid as |row|}}
+  <tr>
+    {{#each row as |cell|}}
+    <td>
+      {{#if lost}}
+        <button class="cell {{if cell.bomb "bomb"}}">{{if cell.bomb "B"}}</button>
+      {{else}}
+        <button class="cell" {{action 'clear' cell}}>
+        {{if cell.cleared cell.neighboringBombs}}
+        </button>
+      {{/if}}
+    </td>
+    {{/each}}
+  </tr>
+  {{/each}}
+</table>
